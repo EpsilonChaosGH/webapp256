@@ -43,7 +43,7 @@
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
-        <property name="packagesToScan" value="bogdanov.entity"/>
+        <property name="packagesToScan" value="morozov.entity"/>
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.dialect">${jdbc.dialect}</prop>
