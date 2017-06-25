@@ -1,13 +1,14 @@
 package morozov.services.business;
 
 import morozov.entity.Group;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 public interface GroupBusinessService {
 
     Group createGroup(Group group);
 
-    Page<Group> findAllGroups(Pageable pageable);
+    List<Group> findAllGroups();
 
+    void deleteGroup(Long id);
 }

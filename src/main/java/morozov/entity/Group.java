@@ -1,14 +1,15 @@
 package morozov.entity;
 
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "pers_group")
 @SequenceGenerator(name = "pers_group_seq", sequenceName = "pers_group_seq", allocationSize = 1)

@@ -8,6 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 @Component
 public class GroupBusinessServiceImpl implements GroupBusinessService {
@@ -19,10 +21,13 @@ public class GroupBusinessServiceImpl implements GroupBusinessService {
         return groupRepository.save(group);
     }
 
-    public Page<Group> findAllGroups(Pageable pageable) {
-        return groupRepository.findAll(pageable);
+    public List<Group> findAllGroups() {
+        return groupRepository.findAll();
     }
 
+    public void   deleteGroup (Long id){
+         groupRepository.delete(id);
+    }
 }
 
     
