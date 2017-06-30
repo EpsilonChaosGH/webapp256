@@ -18,6 +18,14 @@
  
 </form:form>
 
+<body>
+<form:form method="post"  modelAttribute="product" action="createProduct">
+
+  Name: <form:input path="productName"/>   <br/>
+  <form:button>Create Product</form:button>
+
+</form:form>
+
 
  <h1>Groups</h1>
 
@@ -25,7 +33,7 @@
      <table>
          <tr>
              <th width="60">id</th>
-             <th width="120">name</th>
+             <th width="60">name</th>
              <th width="60">edit</th>
              <th width="60">delete</th>
          </tr>
@@ -39,6 +47,31 @@
          </c:forEach>
      </table>
  </c:if>
+
+ </body>
+
+  <h1>Products</h1>
+
+ <c:if test="${!empty productList}">
+      <table>
+          <tr>
+              <th width="60">id</th>
+              <th width="60">name</th>
+              <th width="60">group</th>
+              <th width="60">edit</th>
+              <th width="60">delete</th>
+          </tr>
+          <c:forEach items="${productList}" var="product">
+              <tr>
+                  <td>${product.id}</td>
+                  <td>${product.productName}</td>
+                  <td>${product.group}</td>
+                  <td><a href="<c:url value='/edit/${book.id}'/>">Edit</a></td>
+                  <td><a href="<c:url value='/deleteProduct/${product.id}'/>">Delete</a></td>
+              </tr>
+          </c:forEach>
+      </table>
+  </c:if>
 
 
 

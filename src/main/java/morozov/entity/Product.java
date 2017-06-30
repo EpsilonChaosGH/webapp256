@@ -1,7 +1,9 @@
 package morozov.entity;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +11,8 @@ import javax.persistence.Entity;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "pers_product")
 @SequenceGenerator(name = "pers_product_seq", sequenceName = "pers_product_seq", allocationSize = 1)
@@ -22,5 +26,5 @@ public class Product {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "group_id")
-    private Group group;
+private Group group;
 }

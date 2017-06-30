@@ -11,4 +11,6 @@ public interface GroupBusinessService {
     List<Group> findAllGroups();
 
     void deleteGroup(Long id);
+
+    Group findGroup(Long id);
 }

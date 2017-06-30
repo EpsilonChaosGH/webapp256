@@ -4,10 +4,13 @@ import morozov.entity.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface ProductBusinessService {
 
-    Product createProduct(Product product);
+    void createProduct(Product product);
 
-    Page<Product> findAllProducts(Pageable pageable);
+    List<Product> findAllProducts();
 
+    void deleteProduct(Long id);
 }

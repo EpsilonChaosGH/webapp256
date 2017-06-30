@@ -4,8 +4,6 @@ package morozov.services.business;
 import morozov.entity.Group;
 import morozov.repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -27,6 +25,10 @@ public class GroupBusinessServiceImpl implements GroupBusinessService {
 
     public void   deleteGroup (Long id){
          groupRepository.delete(id);
+    }
+
+    public Group findGroup(Long id){
+        return groupRepository.getOne(id);
     }
 }
 
