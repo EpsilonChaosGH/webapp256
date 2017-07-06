@@ -20,8 +20,8 @@ public class ProductBusinessServiceImpl implements ProductBusinessService {
 
     @Transactional
     public void createProduct(Product product) {
-//        if (product.getGroup().getId() != null)
-//            product.setGroup(groupBusinessService.findGroup(product.getGroup().getId()));
+        if (product.getGroupId() != null)
+            product.setGroup(groupBusinessService.findGroup(product.getGroupId()));
         productRepository.save(product);
     }
 

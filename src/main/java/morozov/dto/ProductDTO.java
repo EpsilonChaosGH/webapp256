@@ -10,5 +10,5 @@ public class ProductDTO {
     private Long id;
     private String productName;
     private GroupDTO group;
-
+    private Long groupId;
 }

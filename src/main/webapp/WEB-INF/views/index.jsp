@@ -21,7 +21,10 @@
 <body>
 <form:form method="post"  modelAttribute="product" action="createProduct">
 
-  Name: <form:input path="productName"/>   <br/>
+  ProductName: <form:input path="productName"/>   <br/>
+  GroupName: <form:select path="groupId">
+    <form:options items="${groupList}" itemValue="id" itemLabel="groupName" />
+   </form:select>  <br/>
   <form:button>Create Product</form:button>
 
 </form:form>
@@ -57,7 +60,7 @@
           <tr>
               <th width="60">id</th>
               <th width="60">name</th>
-              <th width="60">group</th>
+              <th width="60">groupName</th>
               <th width="60">edit</th>
               <th width="60">delete</th>
           </tr>
@@ -65,7 +68,7 @@
               <tr>
                   <td>${product.id}</td>
                   <td>${product.productName}</td>
-                  <td>${product.group}</td>
+                  <td>${product.group.groupName}</td>
                   <td><a href="<c:url value='/edit/${book.id}'/>">Edit</a></td>
                   <td><a href="<c:url value='/deleteProduct/${product.id}'/>">Delete</a></td>
               </tr>

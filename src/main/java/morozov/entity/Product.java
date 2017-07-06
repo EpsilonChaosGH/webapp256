@@ -23,8 +23,10 @@ public class Product {
     private Long id;
     private String productName;
 
+    @Transient
+    private Long groupId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "group_id")
-private Group group;
+    private Group group;
 }
