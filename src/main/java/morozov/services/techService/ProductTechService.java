@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface ProductTechService {
 
-    List<ProductDTO> productToDTOs(List<Product> products);
-
     void createProduct(ProductDTO productDTO);
+
+    List<ProductDTO> findAllProducts();
+
+    void deleteProduct(Long id);
 }

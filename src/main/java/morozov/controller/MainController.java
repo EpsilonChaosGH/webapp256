@@ -7,6 +7,7 @@ import morozov.entity.Group;
 import morozov.entity.Product;
 import morozov.services.business.GroupBusinessService;
 import morozov.services.business.ProductBusinessService;
+import morozov.services.converters.GroupConverter;
 import morozov.services.techService.GroupTechService;
 import morozov.services.techService.ProductTechService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,6 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private GroupBusinessService groupBusinessService;
-
-    @Autowired
-    private ProductBusinessService productBusinessService;
-
-    @Autowired
     private GroupTechService groupTechService;
 
     @Autowired
@@ -39,7 +34,6 @@ public class MainController {
     public String main() {
         return "redirect:/index";
     }
-
 
 
 
@@ -55,32 +49,24 @@ public class MainController {
         return "redirect:/index";
     }
 
-
-
-
     @RequestMapping("/deleteProduct/{id}")
     public String deleteProduct(@PathVariable("id") Long id){
-        productBusinessService.deleteProduct(id);
+        productTechService.deleteProduct(id);
         return "redirect:/index";
     }
 
     @RequestMapping("/deleteGroup/{id}")
     public String deleteGroup(@PathVariable("id") Long id){
-        groupBusinessService.deleteGroup(id);
+        groupTechService.deleteGroup(id);
         return "redirect:/index";
     }
 
-
-
     @RequestMapping(value = "index", method = RequestMethod.GET)
     public String findAllGroups(Model model) {
-
         model.addAttribute("group", new GroupDTO());
-        model.addAttribute("groupList", groupTechService.groupToDTOs(groupBusinessService.findAllGroups()));
-
+        model.addAttribute("groupList", groupTechService.findAllGroups());
         model.addAttribute("product", new ProductDTO());
-        model.addAttribute("productList", productTechService.productToDTOs(productBusinessService.findAllProducts()));
-
+        model.addAttribute("productList", productTechService.findAllProducts());
         return "index";
     }
 }

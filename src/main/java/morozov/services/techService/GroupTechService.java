@@ -8,8 +8,9 @@ import java.util.List;
 
 public interface GroupTechService {
 
-    List<GroupDTO> groupToDTOs(List<Group> groups);
-
      void createGroup(GroupDTO groupDTO);
 
+    List<GroupDTO> findAllGroups();
+
+    void deleteGroup(Long id);
 }
