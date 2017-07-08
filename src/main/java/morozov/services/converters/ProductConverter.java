@@ -14,5 +14,5 @@ public interface ProductConverter {
 
     Product productToEntity(ProductDTO productDTO);
 
-    List<Product> productToEntitys(List<ProductDTO> productDTOs);
+    List<Product> productToEntities(List<ProductDTO> productDTOs);
 }

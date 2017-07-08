@@ -14,6 +14,6 @@ public interface GroupConverter {
 
     Group groupToEntity(GroupDTO groupDTO);
 
-    List<Group> groupToEntitys(List<GroupDTO> groupDTOs);
+    List<Group> groupToEntities(List<GroupDTO> groupDTOs);
 
 }

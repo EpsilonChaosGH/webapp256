@@ -19,17 +19,18 @@ public class GroupBusinessServiceImpl implements GroupBusinessService {
         return groupRepository.save(group);
     }
 
+    public Group findGroup(Long id) {
+        return groupRepository.findOne(id);
+    }
+
     public List<Group> findAllGroups() {
         return groupRepository.findAll();
     }
 
-    public void   deleteGroup (Long id){
-         groupRepository.delete(id);
+    public void deleteGroup(Long id) {
+        groupRepository.delete(id);
     }
 
-    public Group findGroup(Long id){
-        return groupRepository.getOne(id);
-    }
 }
 
     

@@ -1,11 +1,11 @@
 package morozov.services.techService;
 
 import morozov.dto.ProductDTO;
-import morozov.entity.Product;
 import morozov.services.business.ProductBusinessService;
 import morozov.services.converters.ProductConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.util.List;
 
 @Component
@@ -22,12 +22,10 @@ public class ProductTechServiceImpl implements ProductTechService {
     }
 
     public List<ProductDTO> findAllProducts() {
-        List<Product> products = productBusinessService.findAllProducts();
-        return productConverter.productToDTOs(products);
+        return productConverter.productToDTOs(productBusinessService.findAllProducts());
     }
 
     public void deleteProduct(Long id) {
         productBusinessService.deleteProduct(id);
     }
-//        new Product(productDTO.getId(), productDTO.getProductName(),productDTO.getGroupId(), null)
 }

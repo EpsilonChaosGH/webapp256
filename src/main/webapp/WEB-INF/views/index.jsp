@@ -15,7 +15,9 @@
 
   Name: <form:input path="groupName"/>   <br/>
   <form:button>Create Group</form:button>
- 
+        <form:input  path="id" readonly="true" size="8" disabled="true"/>
+        <form:hidden path="id"/>
+
 </form:form>
 
 <body>
@@ -44,7 +46,7 @@
              <tr>
                  <td>${group.id}</td>
                  <td>${group.groupName}</td>
-                 <td><a href="<c:url value='/edit/${book.id}'/>">Edit</a></td>
+                 <td><a href="<c:url value='/editGroup/${group.id}'/>">Edit</a></td>
                  <td><a href="<c:url value='/deleteGroup/${group.id}'/>">Delete</a></td>
              </tr>
          </c:forEach>

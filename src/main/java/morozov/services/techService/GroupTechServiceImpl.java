@@ -1,12 +1,11 @@
 package morozov.services.techService;
 
 import morozov.dto.GroupDTO;
-import morozov.entity.Group;
 import morozov.services.business.GroupBusinessService;
 import morozov.services.converters.GroupConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Component
@@ -23,12 +22,16 @@ public class GroupTechServiceImpl implements GroupTechService {
     }
 
     public List<GroupDTO> findAllGroups() {
-        List<Group> groups = groupBusinessService.findAllGroups();
-        return groupConverter.groupToDTOs(groups);
+        return groupConverter.groupToDTOs(groupBusinessService.findAllGroups());
 
     }
+
     public void deleteGroup(Long id) {
         groupBusinessService.deleteGroup(id);
+    }
+
+    public GroupDTO findGroup(Long id) {
+        return groupConverter.groupToDTO(groupBusinessService.findGroup(id));
     }
 }
 
