@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface GroupTechService {
 
-    void createGroup(GroupDTO groupDTO);
+    void saveGroup(GroupDTO groupDTO);
 
     List<GroupDTO> findAllGroups();
 

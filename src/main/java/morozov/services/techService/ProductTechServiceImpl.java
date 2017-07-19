@@ -17,8 +17,8 @@ public class ProductTechServiceImpl implements ProductTechService {
     @Autowired
     private ProductConverter productConverter;
 
-    public void createProduct(ProductDTO productDTO) {
-        productBusinessService.createProduct(productConverter.productToEntity(productDTO));
+    public void saveProduct(ProductDTO productDTO) {
+        productBusinessService.saveProduct(productConverter.productToEntity(productDTO));
     }
 
     public List<ProductDTO> findAllProducts() {
@@ -27,5 +27,9 @@ public class ProductTechServiceImpl implements ProductTechService {
 
     public void deleteProduct(Long id) {
         productBusinessService.deleteProduct(id);
+    }
+
+    public ProductDTO findProduct(Long id) {
+        return productConverter.productToDTO(productBusinessService.findProduct(id));
     }
 }

@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface ProductBusinessService {
 
-    void createProduct(Product product);
+    void saveProduct(Product product);
 
     List<Product> findAllProducts();
 
     void deleteProduct(Long id);
+
+    Product findProduct(Long id);
 }

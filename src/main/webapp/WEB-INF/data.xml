@@ -60,4 +60,5 @@
         <property name="locations" value="classpath:flyway"/>
     </bean>
 
+
 </beans>

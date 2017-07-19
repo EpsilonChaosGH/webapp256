@@ -17,8 +17,8 @@ public class GroupTechServiceImpl implements GroupTechService {
     @Autowired
     private GroupConverter groupConverter;
 
-    public void createGroup(GroupDTO groupDTO) {
-        groupBusinessService.createGroup(groupConverter.groupToEntity(groupDTO));
+    public void saveGroup(GroupDTO groupDTO) {
+        groupBusinessService.saveGroup(groupConverter.groupToEntity(groupDTO));
     }
 
     public List<GroupDTO> findAllGroups() {

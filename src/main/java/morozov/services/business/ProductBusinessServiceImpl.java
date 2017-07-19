@@ -19,7 +19,7 @@ public class ProductBusinessServiceImpl implements ProductBusinessService {
     private GroupBusinessServiceImpl groupBusinessService;
 
     @Transactional
-    public void createProduct(Product product) {
+    public void saveProduct(Product product) {
         if (product.getGroupId() != null)
             product.setGroup(groupBusinessService.findGroup(product.getGroupId()));
         productRepository.save(product);
@@ -31,6 +31,10 @@ public class ProductBusinessServiceImpl implements ProductBusinessService {
 
     public void deleteProduct(Long id) {
         productRepository.delete(id);
+    }
+
+    public Product findProduct(Long id) {
+        return productRepository.findOne(id);
     }
 
 }

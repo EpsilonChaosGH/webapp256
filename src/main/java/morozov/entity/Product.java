@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Getter
 @Setter
@@ -15,7 +16,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "pers_product")
 @SequenceGenerator(name = "pers_product_seq", sequenceName = "pers_product_seq", allocationSize = 1)
-public class Product {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pers_product_seq")

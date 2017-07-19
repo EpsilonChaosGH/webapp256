@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface GroupBusinessService {
 
-    Group createGroup(Group group);
+    Group saveGroup(Group group);
 
     List<Group> findAllGroups();
 

@@ -8,9 +8,11 @@ import java.util.List;
 
 public interface ProductTechService {
 
-    void createProduct(ProductDTO productDTO);
+    void saveProduct(ProductDTO productDTO);
 
     List<ProductDTO> findAllProducts();
 
     void deleteProduct(Long id);
+
+    ProductDTO findProduct(Long id);
 }

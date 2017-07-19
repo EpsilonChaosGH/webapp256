@@ -1,0 +1,44 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean id="amqConnectionFactory" class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+        <property name="trustAllPackages" value="true"/>
+    </bean>
+
+    <bean id="connectionFactory"
+        class="org.springframework.jms.connection.CachingConnectionFactory">
+        <constructor-arg ref="amqConnectionFactory" />
+    </bean>
+
+    <bean id="sendDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="SecondJmsQueue" />
+    </bean>
+
+    <bean id="listenDestination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg index="0" value="FirstJmsQueue" />
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="defaultDestination" ref="sendDestination" />
+    </bean>
+
+    <bean id="jmsMessageListener" class="morozov.services.jms.JmsMessageListener">
+    </bean>
+
+    <bean id="jmsListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="messageListener" ref="jmsMessageListener" />
+        <property name="destination" ref="listenDestination" />
+        <property name="concurrentConsumers" value="1" />
+        <property name="receiveTimeout" value="3000" />
+        <property name="sessionTransacted" value="true"/>
+    </bean>
+
+</beans>
