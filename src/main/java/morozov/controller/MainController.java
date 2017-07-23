@@ -3,7 +3,6 @@ package morozov.controller;
 
 import morozov.dto.GroupDTO;
 import morozov.dto.ProductDTO;
-import morozov.services.jms.JmsMessageSender;
 import morozov.services.techService.GroupTechService;
 import morozov.services.techService.ProductTechService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,34 +28,27 @@ public class MainController {
         return "redirect:/index";
     }
 
-    @Autowired
-    private JmsMessageSender jmsMessageSender;
-
     @RequestMapping(value = {"/saveProduct", "/editProduct/saveProduct"}, method = RequestMethod.POST)
-    public String createProduct(@ModelAttribute("product") ProductDTO productDTO) {
-        productTechService.saveProduct(productDTO);
-        jmsMessageSender.sendAddProduct(productDTO);
+    public String saveProduct(@ModelAttribute("product") ProductDTO productDTO) {
+        productTechService.saveProductWithMassage(productDTO);
         return "redirect:/index";
     }
 
     @RequestMapping(value = {"/saveGroup", "/editGroup/saveGroup"}, method = RequestMethod.POST)
-    public String createGroup(@ModelAttribute("group") GroupDTO groupDTO) {
-        groupTechService.saveGroup(groupDTO);
-        jmsMessageSender.sendAddGroup(groupDTO);
+    public String saveGroup(@ModelAttribute("group") GroupDTO groupDTO) {
+        groupTechService.saveGroupWithMessage(groupDTO);
         return "redirect:/index";
     }
 
     @RequestMapping("/deleteProduct/{id}")
     public String deleteProduct(@PathVariable("id") Long id) {
-        productTechService.deleteProduct(id);
-        jmsMessageSender.sendDelObject(id, "product");
+        productTechService.deleteProductWithMessage(id);
         return "redirect:/index";
     }
 
     @RequestMapping("/deleteGroup/{id}")
     public String deleteGroup(@PathVariable("id") Long id) {
-        groupTechService.deleteGroup(id);
-        jmsMessageSender.sendDelObject(id, "group");
+        groupTechService.deleteGroupWithMessage(id);
         return "redirect:/index";
     }
 

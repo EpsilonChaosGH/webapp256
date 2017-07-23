@@ -19,9 +19,10 @@ public class GroupBusinessServiceImpl implements GroupBusinessService {
 
     @Autowired
     ProductBusinessService productBusinessService;
-    @Autowired
 
+    @Autowired
     private ProductRepository productRepository;
+
 
     public Group saveGroup(Group group) {
         return groupRepository.save(group);
@@ -35,12 +36,9 @@ public class GroupBusinessServiceImpl implements GroupBusinessService {
         return groupRepository.findAll();
     }
 
-
     public void deleteGroup(Long id) {
-        for (Product product : productBusinessService.findAllProducts()) {
-            if (product.getGroup().getId().equals(id)) {
-                productBusinessService.deleteProduct(product.getId());
-            }
+        for (Product product : productRepository.findByGroup_id(id)) {
+            productBusinessService.deleteProduct(product.getId());
         }
         groupRepository.delete(id);
     }

@@ -15,6 +15,5 @@
     <import resource="jms1.xml"/>
     <!--<import resource="jms1.xml"/>-->
 
-
 </beans>
 

@@ -1,6 +1,5 @@
 package morozov.services.jms;
 
-
 import morozov.dto.GroupDTO;
 import morozov.dto.ProductDTO;
 

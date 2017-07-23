@@ -9,9 +9,13 @@ public interface GroupTechService {
 
     void saveGroup(GroupDTO groupDTO);
 
-    List<GroupDTO> findAllGroups();
+    void saveGroupWithMessage(GroupDTO groupDTO);
 
     void deleteGroup(Long id);
+
+    void deleteGroupWithMessage(Long id);
+
+    List<GroupDTO> findAllGroups();
 
     GroupDTO findGroup(Long id);
 }

@@ -2,8 +2,6 @@ package morozov.services.jms;
 
 import morozov.dto.GroupDTO;
 import morozov.dto.ProductDTO;
-import morozov.services.converters.GroupConverter;
-import morozov.services.converters.ProductConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -16,23 +14,15 @@ import javax.jms.*;
 public class JmsMessageSenderImpl implements JmsMessageSender {
 
     @Autowired
-    private GroupConverter groupConverter;
-
-    @Autowired
-    private ProductConverter productConverter;
-
-    @Autowired
     private JmsTemplate jmsTemplate;
-
 
     public void sendAddProduct(final ProductDTO productDTO) {
         this.jmsTemplate.send(new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
                 ObjectMessage objectMessage = session.createObjectMessage();
-                objectMessage.setObject(productConverter.productToEntity(productDTO));
+                objectMessage.setObject(productDTO);
                 return objectMessage;
-
             }
         });
     }
@@ -42,9 +32,8 @@ public class JmsMessageSenderImpl implements JmsMessageSender {
             @Override
             public Message createMessage(Session session) throws JMSException {
                 ObjectMessage objectMessage = session.createObjectMessage();
-                objectMessage.setObject(groupConverter.groupToEntity(groupDTO));
+                objectMessage.setObject(groupDTO);
                 return objectMessage;
-
             }
         });
     }
@@ -57,7 +46,6 @@ public class JmsMessageSenderImpl implements JmsMessageSender {
                 textMessage.setStringProperty("type", type);
                 textMessage.setLongProperty("id", id);
                 return textMessage;
-
             }
         });
     }
